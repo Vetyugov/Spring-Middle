@@ -3,11 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="csvQuestionParser" class="ru.vetyugov.springMiddle.util.CsvQuestionParser">
+    <bean id="stringReader" class="ru.vetyugov.springMiddle.util.CSVResourceStringReader">
         <property name="fileName" value="questions.csv"/>
     </bean>
+    <bean id="stringToQuestionParser" class="ru.vetyugov.springMiddle.util.StringToQuestionParserImpl">
+        <property name="regex" value=","/>
+    </bean>
+    <bean id="questionReader" class="ru.vetyugov.springMiddle.util.QuestionReaderImpl">
+        <property name="stringReader" ref="stringReader"/>
+        <property name="stringToQuestionParser" ref="stringToQuestionParser"/>
+    </bean>
     <bean id="questionDao" class="ru.vetyugov.springMiddle.dao.QuestionDaoImpl">
-        <constructor-arg ref="csvQuestionParser"/>
+        <constructor-arg ref="questionReader"/>
     </bean>
     <bean id="questionService" class="ru.vetyugov.springMiddle.service.QuestionServiceImpl">
         <constructor-arg ref="questionDao"/>
