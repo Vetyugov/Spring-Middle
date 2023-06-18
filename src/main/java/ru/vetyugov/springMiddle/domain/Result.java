@@ -3,10 +3,12 @@ package ru.vetyugov.springMiddle.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
-public class Question {
-    private final String question;
+public class Result {
+    private User user;
 
-    private final String rightAnswer;
+    private List<ResultItem> resultItems;
 }

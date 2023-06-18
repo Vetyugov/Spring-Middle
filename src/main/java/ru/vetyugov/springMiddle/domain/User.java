@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class Question {
-    private final String question;
+public class User {
+    private String name;
 
-    private final String rightAnswer;
+    private String surname;
 }

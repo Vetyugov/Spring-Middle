@@ -1,6 +1,8 @@
 package ru.vetyugov.springMiddle.util;
 
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import ru.vetyugov.springMiddle.exception.StringReaderException;
 import ru.vetyugov.springMiddle.util.interfaces.StringReader;
 
@@ -11,9 +13,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CSVResourceStringReader implements StringReader {
-    @Setter
-    private String fileName;
+    private final String fileName;
+
+    public CSVResourceStringReader(@Value("${file.filename}") String fileName) {
+        this.fileName = fileName;
+    }
 
     @Override
     public List<String> readStrings() throws StringReaderException {
@@ -22,7 +28,7 @@ public class CSVResourceStringReader implements StringReader {
         }
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         if (is == null) {
-            throw new StringReaderException("File not found");
+            throw new StringReaderException("File not found : " + fileName);
         }
         List<String> listLines = new ArrayList<>();
         try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(is));) {

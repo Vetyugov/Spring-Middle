@@ -5,8 +5,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class Question {
-    private final String question;
+public class ResultItem {
+    private Question question;
 
-    private final String rightAnswer;
+    private Answer answer;
+
+    private boolean isRightAnswer;
 }

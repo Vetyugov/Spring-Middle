@@ -1,16 +1,23 @@
 package ru.vetyugov.springMiddle;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.vetyugov.springMiddle.util.QuestionsPrinter;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+import ru.vetyugov.springMiddle.domain.Result;
+import ru.vetyugov.springMiddle.service.TaskService;
+import ru.vetyugov.springMiddle.util.interfaces.ResultPrinter;
 
-@SpringBootApplication
+@ComponentScan
+@PropertySource("classpath:application.properties")
 public class SpringMiddleApplication {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
-        QuestionsPrinter questionsPrinter = context.getBean(QuestionsPrinter.class);
-        questionsPrinter.printAllQuestions();
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(SpringMiddleApplication.class);
+        TaskService taskService = context.getBean(TaskService.class);
+        Result result = taskService.startTask();
+        ResultPrinter resultPrinter = context.getBean(ResultPrinter.class);
+        resultPrinter.printResult(result);
     }
 
 }
