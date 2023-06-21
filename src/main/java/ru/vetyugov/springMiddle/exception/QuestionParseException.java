@@ -1,6 +1,6 @@
 package ru.vetyugov.springMiddle.exception;
 
-public class QuestionParseException extends Exception{
+public class QuestionParseException extends SpringMiddleException{
     public QuestionParseException(String message) {
         super(message);
     }
