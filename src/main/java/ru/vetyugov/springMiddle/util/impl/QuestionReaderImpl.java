@@ -1,15 +1,13 @@
-package ru.vetyugov.springMiddle.util;
+package ru.vetyugov.springMiddle.util.impl;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 import ru.vetyugov.springMiddle.domain.Question;
 import ru.vetyugov.springMiddle.exception.ParserException;
 import ru.vetyugov.springMiddle.exception.StringReaderException;
-import ru.vetyugov.springMiddle.util.interfaces.QuestionReader;
-import ru.vetyugov.springMiddle.util.interfaces.StringReader;
-import ru.vetyugov.springMiddle.util.interfaces.StringToQuestionParser;
+import ru.vetyugov.springMiddle.util.QuestionReader;
+import ru.vetyugov.springMiddle.util.StringReader;
+import ru.vetyugov.springMiddle.util.StringToQuestionParser;
 
 import java.util.List;
 

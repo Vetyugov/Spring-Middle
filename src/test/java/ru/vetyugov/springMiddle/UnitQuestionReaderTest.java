@@ -10,9 +10,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.vetyugov.springMiddle.domain.Question;
 import ru.vetyugov.springMiddle.exception.ParserException;
-import ru.vetyugov.springMiddle.util.QuestionReaderImpl;
-import ru.vetyugov.springMiddle.util.interfaces.StringReader;
-import ru.vetyugov.springMiddle.util.interfaces.StringToQuestionParser;
+import ru.vetyugov.springMiddle.util.impl.QuestionReaderImpl;
+import ru.vetyugov.springMiddle.util.StringReader;
+import ru.vetyugov.springMiddle.util.StringToQuestionParser;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
-package ru.vetyugov.springMiddle.service;
+package ru.vetyugov.springMiddle.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.vetyugov.springMiddle.service.IOService;
 
 import java.io.PrintStream;
 import java.util.Scanner;

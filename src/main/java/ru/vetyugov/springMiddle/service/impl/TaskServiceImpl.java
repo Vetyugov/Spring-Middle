@@ -1,4 +1,4 @@
-package ru.vetyugov.springMiddle.service;
+package ru.vetyugov.springMiddle.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,9 @@ import ru.vetyugov.springMiddle.domain.Question;
 import ru.vetyugov.springMiddle.domain.Answer;
 import ru.vetyugov.springMiddle.domain.Result;
 import ru.vetyugov.springMiddle.domain.ResultItem;
+import ru.vetyugov.springMiddle.service.QuestionIOService;
+import ru.vetyugov.springMiddle.service.QuestionService;
+import ru.vetyugov.springMiddle.service.TaskService;
 import ru.vetyugov.springMiddle.util.AnswerToResultItemParser;
 import ru.vetyugov.springMiddle.util.AnswerToUserParser;
 
@@ -39,7 +42,7 @@ public class TaskServiceImpl implements TaskService {
         return new Result(user, resultItemList);
     }
 
-    public Answer doQuestion(Question question) {
+    private Answer doQuestion(Question question) {
         questionIOService.printQuestion(question);
         return questionIOService.getAnswer();
     }

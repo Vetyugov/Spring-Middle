@@ -1,10 +1,9 @@
-package ru.vetyugov.springMiddle.util;
+package ru.vetyugov.springMiddle.util.impl;
 
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.vetyugov.springMiddle.exception.StringReaderException;
-import ru.vetyugov.springMiddle.util.interfaces.StringReader;
+import ru.vetyugov.springMiddle.util.StringReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;

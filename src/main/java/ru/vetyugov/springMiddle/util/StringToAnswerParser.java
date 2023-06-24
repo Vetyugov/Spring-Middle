@@ -1,4 +1,4 @@
-package ru.vetyugov.springMiddle.util.interfaces;
+package ru.vetyugov.springMiddle.util;
 
 import ru.vetyugov.springMiddle.domain.Answer;
 

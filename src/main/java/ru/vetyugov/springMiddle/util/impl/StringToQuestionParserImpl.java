@@ -1,10 +1,9 @@
-package ru.vetyugov.springMiddle.util;
+package ru.vetyugov.springMiddle.util.impl;
 
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.vetyugov.springMiddle.domain.Question;
-import ru.vetyugov.springMiddle.util.interfaces.StringToQuestionParser;
+import ru.vetyugov.springMiddle.util.StringToQuestionParser;
 
 @Component
 public class StringToQuestionParserImpl implements StringToQuestionParser {
