@@ -1,7 +1,7 @@
 package ru.vetyugov.springMiddle.util.impl;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.vetyugov.springMiddle.config.AppQuestionProps;
 import ru.vetyugov.springMiddle.domain.Question;
 import ru.vetyugov.springMiddle.util.StringToQuestionParser;
 
@@ -9,8 +9,8 @@ import ru.vetyugov.springMiddle.util.StringToQuestionParser;
 public class StringToQuestionParserImpl implements StringToQuestionParser {
     private final String regex;
 
-    public StringToQuestionParserImpl(@Value("${file.regex}") String regex) {
-        this.regex = regex;
+    public StringToQuestionParserImpl(AppQuestionProps appQuestionProps) {
+        this.regex = appQuestionProps.getRegex();
     }
 
     @Override

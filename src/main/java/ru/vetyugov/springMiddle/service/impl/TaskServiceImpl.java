@@ -2,11 +2,8 @@ package ru.vetyugov.springMiddle.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.vetyugov.springMiddle.domain.User;
-import ru.vetyugov.springMiddle.domain.Question;
-import ru.vetyugov.springMiddle.domain.Answer;
-import ru.vetyugov.springMiddle.domain.Result;
-import ru.vetyugov.springMiddle.domain.ResultItem;
+import ru.vetyugov.springMiddle.domain.*;
+import ru.vetyugov.springMiddle.service.MessageService;
 import ru.vetyugov.springMiddle.service.QuestionIOService;
 import ru.vetyugov.springMiddle.service.QuestionService;
 import ru.vetyugov.springMiddle.service.TaskService;
@@ -27,9 +24,13 @@ public class TaskServiceImpl implements TaskService {
 
     private final AnswerToResultItemParser answerToResultItemParser;
 
+    private final MessageService messageService;
+
     @Override
     public Result startTask() {
-        Question firstQuestion = new Question("Введите Имя и Фамилию", null);
+        String firstQuestionStr = messageService.getMessageByKey(
+                "question.Enter Name and Surname");
+        Question firstQuestion = new Question(firstQuestionStr, null);
         User user = answerToUserParser.getUser(doQuestion(firstQuestion));
 
         List<Question> questionList = questionService.getQuestionList();

@@ -1,8 +1,9 @@
 package ru.vetyugov.springMiddle.util.impl;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.vetyugov.springMiddle.config.AppQuestionProps;
 import ru.vetyugov.springMiddle.exception.StringReaderException;
+import ru.vetyugov.springMiddle.service.MessageService;
 import ru.vetyugov.springMiddle.util.StringReader;
 
 import java.io.BufferedReader;
@@ -16,8 +17,8 @@ import java.util.List;
 public class CSVResourceStringReader implements StringReader {
     private final String fileName;
 
-    public CSVResourceStringReader(@Value("${file.filename}") String fileName) {
-        this.fileName = fileName;
+    public CSVResourceStringReader(AppQuestionProps appQuestionProps, MessageService messageService) {
+        this.fileName = messageService.getMessageByKey(appQuestionProps.getBundleFileName());
     }
 
     @Override

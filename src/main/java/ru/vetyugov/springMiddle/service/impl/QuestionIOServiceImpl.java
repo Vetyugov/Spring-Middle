@@ -23,7 +23,7 @@ public class QuestionIOServiceImpl implements QuestionIOService {
 
     @Override
     public void printQuestion(Question question) {
-        ioService.write(question.getQuestion());
+        ioService.write(question.getQuestion()+"\n");
     }
 
     @Override

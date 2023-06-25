@@ -6,6 +6,7 @@ import ru.vetyugov.springMiddle.domain.Result;
 import ru.vetyugov.springMiddle.domain.ResultItem;
 import ru.vetyugov.springMiddle.domain.User;
 import ru.vetyugov.springMiddle.service.IOService;
+import ru.vetyugov.springMiddle.service.MessageService;
 import ru.vetyugov.springMiddle.util.ResultPrinter;
 
 @Component
@@ -13,8 +14,13 @@ public class ResultPrinterConsol implements ResultPrinter {
 
     private final IOService ioService;
 
-    public ResultPrinterConsol(@Qualifier("IOServiceImpl") IOService ioService) {
+    private final MessageService messageService;
+
+    public ResultPrinterConsol(
+            @Qualifier("IOServiceImpl") IOService ioService,
+            MessageService messageService) {
         this.ioService = ioService;
+        this.messageService = messageService;
     }
 
     @Override
@@ -22,18 +28,11 @@ public class ResultPrinterConsol implements ResultPrinter {
         long allCount = result.getResultItems().size();
         long rightCount = result.getResultItems().stream().filter(ResultItem::isRightAnswer).count();
         User user = result.getUser();
-        StringBuilder sb = new StringBuilder();
-        String s = sb
-                .append("Пользователь ")
-                .append(user.getName())
-                .append(" ")
-                .append(user.getSurname())
-                .append(" набрал ")
-                .append(rightCount)
-                .append("/")
-                .append(allCount)
-                .append(" баллов")
-                .toString();
-        ioService.write(s);
+        String str = messageService.getMessageByKey("question.ResultString", new String[]{
+                user.getName() + " " + user.getSurname(),
+                String.valueOf(rightCount),
+                String.valueOf(allCount)
+        });
+        ioService.write(str);
     }
 }
